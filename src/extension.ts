@@ -6,18 +6,18 @@ import { parseOutput as parseMhStyleOutput } from './parsers/mh_style_parser';
 const lintDiagnostics = vscode.languages.createDiagnosticCollection('misshit-lint');
 const styleDiagnostics = vscode.languages.createDiagnosticCollection('misshit-style');
 
-function runMhLint(document: vscode.TextDocument, collection: vscode.DiagnosticCollection, severity: vscode.DiagnosticSeverity) {
+function runMhLint(document: vscode.TextDocument, collection: vscode.DiagnosticCollection) {
     return new Promise<void>((resolve) => {
         const env = { ...process.env, PYTHONIOENCODING: 'UTF-8' };
 
-        exec(`mh_lint "${document.fileName}"`, {env}, (error, stdout, stderr) => {
+        exec(`mh_lint "${document.fileName}"`, { env, encoding: 'utf8' }, (error, stdout, stderr) => {
             if (error && !stdout) {
                 vscode.window.showErrorMessage(`[MISS_HIT] mh_lint failed: ${stderr}`);
                 collection.set(document.uri, []);
                 return resolve();
             }
 
-            const diagnostics = parseMhLintOutput(stdout, severity);
+            const diagnostics = parseMhLintOutput(stdout);
             collection.set(document.uri, diagnostics);
             resolve();
         });
@@ -28,7 +28,7 @@ function runMhStyle(document: vscode.TextDocument, collection: vscode.Diagnostic
     return new Promise<void>((resolve) => {
         const env = { ...process.env, PYTHONIOENCODING: 'UTF-8' };
         
-        exec(`mh_style --fix "${document.fileName}"`, {env}, (error, stdout, stderr) => {
+        exec(`mh_style --fix "${document.fileName}"`, { env, encoding: 'utf8' }, (error, stdout, stderr) => {
             if (error && !stdout) {
                 vscode.window.showErrorMessage(`[MISS_HIT] mh_style failed: ${stderr}`);
                 collection.set(document.uri, []);
@@ -46,7 +46,7 @@ async function lintAndStyle(document: vscode.TextDocument) {
     if (document.languageId !== 'matlab') {
         return;
     }
-    await runMhLint(document, lintDiagnostics, vscode.DiagnosticSeverity.Warning);
+    await runMhLint(document, lintDiagnostics);
     await runMhStyle(document, styleDiagnostics, vscode.DiagnosticSeverity.Information);
 }
 
