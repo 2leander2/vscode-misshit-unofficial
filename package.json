@@ -9,13 +9,15 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": [
+    "onLanguage:matlab"
+  ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "vscode-misshit-unofficial.helloWorld",
-        "title": "Hello World"
+        "command": "vscode-misshit-unofficial.lintAndStyle",
+        "title": "MISS_HIT: Run Lint + Style"
       }
     ]
   },
