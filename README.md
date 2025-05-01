@@ -1,71 +1,62 @@
-# vscode-misshit-unofficial README
+# Unofficial MISS_HIT VS Code extension
 
-This is the README for your extension "vscode-misshit-unofficial". After writing up a brief description, we recommend including the following sections.
+Unofficial VS Code extension that integrates MISS_HIT linting and styling tools for MATLAB code. This extension provides real-time feedback about code quality and style issues directly in your VS Code editor.
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
-
-For example if there is an image subfolder under your extension project workspace:
-
-\!\[feature X\]\(images/feature-x.png\)
-
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- Automatically runs MISS_HIT linting and styling checks when MATLAB files are saved
+- Displays lint warnings and errors in the editor with appropriate severity levels
+- Runs `mh_style --fix` to automatically fix style issues when possible
+- Provides a command to manually run linting and styling checks
+- Shows precise locations of issues with clear messages and error codes
 
 ## Requirements
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+- Visual Studio Code 1.99.0 or newer
+- [MISS_HIT](https://github.com/florianschanda/miss_hit) must be installed and available in your PATH
+  - Install via pip: `pip install miss_hit`
+  - Verify installation by running `mh_lint --version` and `mh_style --version` in your terminal
 
-## Extension Settings
+## Usage
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+1. Open a MATLAB file in VS Code
+2. The extension will automatically run MISS_HIT checks when you save the file
+3. Issues will be highlighted directly in your code with hover messages explaining the problems
+4. Run checks manually using the command palette:
+   - Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on macOS)
+   - Type `MISS_HIT: Run Lint + Style`
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+- Requires MISS_HIT to be installed and in PATH
+- No configuration options (configuration support coming in future versions)
+- Style auto-fixes require saving the file again to see changes
+- No tests (test parsed results on a sample MATLAB file against verified results in future versions)
+
+## Planned Features
+
+- Configuration options through VS Code settings
+- Support for MISS_HIT project configuration files
+- Quick fixes for common issues
+- Test integration
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
+### 0.0.1
 
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
+- Initial release
+- Basic integration with mh_lint and mh_style
+- Automatic checking on file save
+- Command palette integration
 
 ---
 
-## Following extension guidelines
+## About MISS_HIT
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
+[MISS_HIT](https://github.com/florianschanda/miss_hit) is a set of tools specifically designed for MATLAB code quality. It includes:
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+- **mh_lint**: A static analyzer for MATLAB and Octave code
+- **mh_style**: A tool for enforcing a consistent coding style
+- **mh_metric**: A tool for code metrics analysis
 
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+This extension integrates the linting and styling capabilities directly into VS Code.

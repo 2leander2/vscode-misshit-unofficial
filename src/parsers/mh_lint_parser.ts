@@ -43,7 +43,7 @@ export function parseOutput(output: string): vscode.Diagnostic[] {
         const { line, columnStart, columnWidth, severity, message, tag } = result;
         const range = new vscode.Range(
             new vscode.Position(line - 1, columnStart - 1),
-            new vscode.Position(line - 1, columnStart - 1 + columnWidth) // Highlight the range of the pointer
+            new vscode.Position(line - 1, columnStart - 1 + columnWidth)
         );
         
         const diagnostic = new vscode.Diagnostic(
