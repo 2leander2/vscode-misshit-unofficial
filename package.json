@@ -3,6 +3,11 @@
   "displayName": "vscode-misshit-unofficial",
   "description": "Unofficial VSCode extension for MISS_HIT linting and styling (mh_lint & mh_style)",
   "version": "0.0.1",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/2leander2/vscode-misshit-unofficial.git"
+  },
   "engines": {
     "vscode": "^1.99.0"
   },

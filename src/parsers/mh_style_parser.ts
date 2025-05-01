@@ -14,7 +14,6 @@ export function parseOutput(output: string, severity: vscode.DiagnosticSeverity)
         message: m[6],
         tag: m[7],
     }));
-
     for (const result of results) {
         const { line, columnStart, columnWidth, message, tag } = result;
         const range = new vscode.Range(
@@ -31,7 +30,7 @@ export function parseOutput(output: string, severity: vscode.DiagnosticSeverity)
         if (tag) {
             diagnostic.code = tag;
         }
-        diagnostic.source = 'MISS_HIT';
+        diagnostic.source = 'mh_style';
         
         diagnostics.push(diagnostic);
     }

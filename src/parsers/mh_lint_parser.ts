@@ -1,9 +1,7 @@
 import * as vscode from 'vscode';
-import { showHiddenChars } from '../utils/string_utils';
 
 export function parseOutput(output: string): vscode.Diagnostic[] {
     const diagnostics: vscode.Diagnostic[] = [];
-    console.log(showHiddenChars(output));
     const regex = /In (.*?), line (\d+)\r?\n\|\s*(.*?)\r?\n\|(\s*)(\^+)\s+check\s+\((\w+)\):\s+(.*?)\s*\[(.+?)\]/gs;
     const matches = [...output.matchAll(regex)];
     
@@ -37,8 +35,6 @@ export function parseOutput(output: string): vscode.Diagnostic[] {
             tag: m[8],
         };
     });
-    
-    console.log(results);
     for (const result of results) {
         const { line, columnStart, columnWidth, severity, message, tag } = result;
         const range = new vscode.Range(
@@ -55,7 +51,7 @@ export function parseOutput(output: string): vscode.Diagnostic[] {
         if (tag) {
             diagnostic.code = tag;
         }
-        diagnostic.source = 'MISS_HIT';
+        diagnostic.source = 'mh_lint';
         
         diagnostics.push(diagnostic);
     }
