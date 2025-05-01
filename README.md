@@ -32,6 +32,7 @@ Unofficial VS Code extension that integrates MISS_HIT linting and styling tools 
 - No configuration options (configuration support coming in future versions)
 - Style auto-fixes require saving the file again to see changes
 - No tests (test parsed results on a sample MATLAB file against verified results in future versions)
+- No proper logging
 
 ## Planned Features
 
