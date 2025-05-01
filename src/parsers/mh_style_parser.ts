@@ -14,6 +14,11 @@ export function parseOutput(output: string, severity: vscode.DiagnosticSeverity)
         message: m[6],
         tag: m[7],
     }));
+    if (results.length === 0) {
+        console.error(output);
+        vscode.window.showErrorMessage(output);
+        return diagnostics;
+    }
     for (const result of results) {
         const { line, columnStart, columnWidth, message, tag } = result;
         const range = new vscode.Range(
