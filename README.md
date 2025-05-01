@@ -29,10 +29,8 @@ Unofficial VS Code extension that integrates MISS_HIT linting and styling tools 
 ## Known Issues
 
 - Requires MISS_HIT to be installed and in PATH
-- No configuration options (configuration support coming in future versions)
+- No configuration options
 - Style auto-fixes require saving the file again to see changes
-- No tests (test parsed results on a sample MATLAB file against verified results in future versions)
-- No proper logging
 
 ## Planned Features
 
@@ -40,6 +38,8 @@ Unofficial VS Code extension that integrates MISS_HIT linting and styling tools 
 - Support for MISS_HIT project configuration files
 - Quick fixes for common issues
 - Test integration
+- Proper logging
+- Store presence
 
 ## Release Notes
 
