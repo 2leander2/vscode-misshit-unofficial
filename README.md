@@ -61,3 +61,7 @@ Unofficial VS Code extension that integrates MISS_HIT linting and styling tools 
 - **mh_metric**: A tool for code metrics analysis
 
 This extension integrates the linting and styling capabilities directly into VS Code.
+
+### Acknowledgment
+
+This project was developed with the assistance of [ChatGPT](https://openai.com/chatgpt) and [GitHub Copilot](https://github.com/features/copilot).
